@@ -30,6 +30,14 @@ export type ProcessStep = {
   body: string;
 };
 
+export type TutorialStep = {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+  visual: "task" | "record" | "spec" | "agent";
+  assetPath?: string;
+};
+
 export type Material = {
   icon: LucideIcon;
   title: string;
@@ -52,9 +60,41 @@ export const siteContent = {
     title: "看你做一遍，剩下的交给 Pears",
     statement: "一个会学习你工作方式的智能体工作台",
     body:
-      "不要求你先写清需求。你只需要示范一次真实工作流，Pears 会把步骤蒸馏成可编辑规格，并交给编码智能体生成常驻可用的专属 Agent。",
+      "先看一段真实演示：Pears 怎样从一次示范里学出工作流，并生成常驻可用的专属 Agent。",
     primaryCta: "打开 Pears Agent",
     secondaryCta: "完整路演",
+  },
+  tutorial: {
+    eyebrow: "新手教程",
+    title: "新手教程：4 步看 Pears 怎么学会你。",
+    body:
+      "当前先用可替换的动态图形位展示流程。后续把新手教程截图、GIF 或短视频填到对应步骤即可。",
+    steps: [
+      {
+        icon: FileText,
+        title: "描述任务",
+        body: "说清楚你想省下来的重复工作，给 Pears 一个明确目标。",
+        visual: "task",
+      },
+      {
+        icon: Play,
+        title: "录制示范",
+        body: "像平时一样操作一次，Pears 在可见范围内记录关键步骤。",
+        visual: "record",
+      },
+      {
+        icon: CheckCircle2,
+        title: "确认规格",
+        body: "把真实操作蒸馏成目标、触发、输入、步骤和产出。",
+        visual: "spec",
+      },
+      {
+        icon: Boxes,
+        title: "生成 Agent",
+        body: "规格交给编码智能体，生成常驻可用的专属 Pear App。",
+        visual: "agent",
+      },
+    ] satisfies TutorialStep[],
   },
   thesis: [
     {

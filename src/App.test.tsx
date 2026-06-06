@@ -28,6 +28,32 @@ describe("Pear_Web public site", () => {
     );
   });
 
+  it("puts the demo video before text-heavy value content on the homepage", () => {
+    window.history.pushState({}, "", "/");
+    const { container } = render(<App />);
+
+    const videoSection = container.querySelector('[data-section="demo-video"]');
+    const valueSection = container.querySelector('[data-section="value"]');
+
+    expect(videoSection).toBeInTheDocument();
+    expect(valueSection).toBeInTheDocument();
+    expect(
+      videoSection?.compareDocumentPosition(valueSection as Element),
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
+  it("renders the visual tutorial flow with four replaceable onboarding steps", () => {
+    window.history.pushState({}, "", "/");
+
+    render(<App />);
+
+    expect(screen.getByRole("heading", { name: /新手教程/i })).toBeInTheDocument();
+    expect(screen.getByText("描述任务")).toBeInTheDocument();
+    expect(screen.getByText("录制示范")).toBeInTheDocument();
+    expect(screen.getByText("确认规格")).toBeInTheDocument();
+    expect(screen.getByText("生成 Agent")).toBeInTheDocument();
+  });
+
   it("renders the materials page as summaries rather than full documents", () => {
     window.history.pushState({}, "", "/materials");
 

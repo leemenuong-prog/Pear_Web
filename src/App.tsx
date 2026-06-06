@@ -7,7 +7,7 @@ import {
   Play,
 } from "lucide-react";
 import "./App.css";
-import { siteContent, type Material } from "./content/site";
+import { siteContent, type Material, type TutorialStep } from "./content/site";
 
 const routeForPath = (pathname: string) => {
   if (pathname.startsWith("/deck")) return "deck";
@@ -48,6 +48,122 @@ function SiteHeader() {
   );
 }
 
+function DemoVideoSection() {
+  return (
+    <section className="section video-section" data-section="demo-video" id="demo">
+      <div className="section-copy narrow">
+        <span className="section-label">演示视频</span>
+        <h2>先看 2 分钟，Pears 怎样把示范变成 Agent。</h2>
+        <p>当前视频为占位版本。后续替换 `/media/pears-demo.mp4`，官网会自动使用新演示。</p>
+      </div>
+      <div className="video-shell">
+        <video controls preload="metadata" src={siteContent.videoPath}>
+          你的浏览器暂不支持视频播放。
+        </video>
+        <div className="video-caption">
+          <Play aria-hidden="true" size={18} />
+          <span>手机端优先看到演示，再继续看步骤和资料。</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TutorialScene({ visual }: { visual: TutorialStep["visual"] }) {
+  return (
+    <div className={`tutorial-scene tutorial-scene-${visual}`} aria-hidden="true">
+      {visual === "task" && (
+        <>
+          <div className="scene-prompt">
+            <span>我要省下来的工作</span>
+            <strong>每 2 天追踪视频数据</strong>
+          </div>
+          <div className="scene-chip-row">
+            <span>YouTube</span>
+            <span>TikTok</span>
+            <span>日报</span>
+          </div>
+        </>
+      )}
+      {visual === "record" && (
+        <>
+          <div className="scene-browser">
+            <div className="scene-browser-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="scene-browser-body">
+              <i />
+              <i />
+              <i />
+            </div>
+          </div>
+          <div className="scene-cursor" />
+          <div className="scene-recording">正在记录</div>
+        </>
+      )}
+      {visual === "spec" && (
+        <div className="scene-spec">
+          <span>目标</span>
+          <span>触发</span>
+          <span>输入</span>
+          <span>步骤</span>
+          <span>产出</span>
+          <span>边界</span>
+        </div>
+      )}
+      {visual === "agent" && (
+        <>
+          <div className="scene-agent-card">
+            <span>🍐</span>
+            <strong>P 视频管家</strong>
+            <small>定时运行 · 可优化</small>
+          </div>
+          <div className="scene-progress">
+            <span />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function VisualStepCard({ step, index }: { step: TutorialStep; index: number }) {
+  const Icon = step.icon;
+
+  return (
+    <article className="tutorial-card">
+      <div className="tutorial-card-top">
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <Icon aria-hidden="true" size={20} />
+      </div>
+      <TutorialScene visual={step.visual} />
+      <h3>{step.title}</h3>
+      <p>{step.body}</p>
+    </article>
+  );
+}
+
+function TutorialFlow() {
+  return (
+    <section className="section tutorial-section">
+      <div className="section-copy tutorial-heading">
+        <span className="section-label">{siteContent.tutorial.eyebrow}</span>
+        <div>
+          <h2>{siteContent.tutorial.title}</h2>
+          <p>{siteContent.tutorial.body}</p>
+        </div>
+      </div>
+      <div className="tutorial-flow" aria-label="Pears 新手教程步骤">
+        {siteContent.tutorial.steps.map((step, index) => (
+          <VisualStepCard index={index} key={step.title} step={step} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function HomePage() {
   return (
     <>
@@ -70,6 +186,13 @@ function HomePage() {
               {siteContent.hero.secondaryCta}
               <ArrowRight aria-hidden="true" size={18} />
             </a>
+          </div>
+          <div className="hero-mobile-cue" aria-label="Pears 生成流程">
+            <span>示范</span>
+            <ArrowRight aria-hidden="true" size={14} />
+            <span>规格</span>
+            <ArrowRight aria-hidden="true" size={14} />
+            <span>Agent</span>
           </div>
         </div>
         <div className="hero-product" aria-label="Pears 产品流程预览">
@@ -107,7 +230,11 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section intro-section" id="value">
+      <DemoVideoSection />
+
+      <TutorialFlow />
+
+      <section className="section intro-section" data-section="value" id="value">
         <div className="section-copy">
           <span className="section-label">核心价值</span>
           <h2>不是让用户写清需求，而是从真实工作里学出来。</h2>
@@ -126,27 +253,6 @@ function HomePage() {
               </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="section video-section" id="demo">
-        <div className="section-copy narrow">
-          <span className="section-label">演示视频</span>
-          <h2>先看产品如何把示范变成 Agent。</h2>
-          <p>当前视频为占位版本，后续替换 `/media/pears-demo.mp4` 即可更新官网展示。</p>
-        </div>
-        <div className="video-shell">
-          <video
-            controls
-            preload="metadata"
-            src={siteContent.videoPath}
-          >
-            你的浏览器暂不支持视频播放。
-          </video>
-          <div className="video-caption">
-            <Play aria-hidden="true" size={18} />
-            <span>2 分钟内理解 Pears 的示范、蒸馏和生成闭环。</span>
-          </div>
         </div>
       </section>
 
