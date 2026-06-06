@@ -2,6 +2,10 @@
 
 Pears public roadshow website. It is a static React + Vite site for Netlify.
 
+Live site: https://pear-web-leemenuong.netlify.app
+
+Netlify admin: https://app.netlify.com/projects/pear-web-leemenuong
+
 ## Run
 
 ```bash
