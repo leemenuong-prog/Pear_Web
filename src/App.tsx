@@ -74,7 +74,12 @@ function BackgroundSection() {
     <section className="section background-section" data-section="background">
       <div className="background-copy">
         <span className="section-label">{siteContent.background.eyebrow}</span>
-        <h2>{siteContent.background.title}</h2>
+        <h2 className="background-title" aria-label={siteContent.background.title}>
+          <span className="background-title-tag">Vibecoding</span>
+          <span>让开发门槛极大降低，</span>
+          <span>但生产力还没真正到达</span>
+          <strong>普通人手里。</strong>
+        </h2>
         <p>{siteContent.background.body}</p>
       </div>
       <div className="background-map" aria-label="Agent 落地三道坎">

@@ -398,6 +398,33 @@ main {
   letter-spacing: 0;
 }
 
+.background-title {
+  display: grid;
+  gap: 8px;
+}
+
+.background-title span,
+.background-title strong {
+  display: block;
+}
+
+.background-title-tag {
+  width: fit-content;
+  padding: 7px 11px;
+  border: 1px solid rgba(35, 129, 81, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #238151;
+  font-size: 0.34em;
+  font-weight: 860;
+  line-height: 1;
+}
+
+.background-title strong {
+  color: #1e7f4d;
+  font-weight: 860;
+}
+
 .background-copy p {
   margin: 18px 0 0;
   max-width: 570px;
@@ -1374,7 +1401,17 @@ main {
   }
 
   .background-copy h2 {
-    font-size: 28px;
+    font-size: 29px;
+    line-height: 1.08;
+  }
+
+  .background-title {
+    gap: 7px;
+  }
+
+  .background-title-tag {
+    padding: 6px 9px;
+    font-size: 12px;
   }
 
   .background-copy p {
