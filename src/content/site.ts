@@ -60,7 +60,7 @@ export const siteContent = {
   videoPath: "/media/pears-roadshow-final.mp4",
   nav: [
     { label: "首页", href: "/" },
-    { label: "完整路演", href: "/deck" },
+    { label: "完整信息", href: "/deck" },
     { label: "资料", href: "/materials" },
   ] satisfies NavItem[],
   hero: {
@@ -69,13 +69,13 @@ export const siteContent = {
     body:
       "Pears 帮你把隐性的工作经验蒸馏成可执行规格，再生成常驻可用的专属 Agent。",
     primaryCta: "打开 Pears Agent",
-    secondaryCta: "完整路演",
+    secondaryCta: "完整信息",
   },
   background: {
     eyebrow: "应用背景",
-    title: "Agent 会写了，落地还卡在三道坎。",
+    title: "Vibecoding 让开发门槛极大降低，但生产力还没真正到达普通人手里。",
     body:
-      "Vibe coding 让生成程序变容易，但很多 OPC 和团队仍然没把这份生产力变成自己的工具。真正卡住的是理解、发现和表达。",
+      "很多 OPC 和团队已经能让 Agent 写出程序，却还没把它变成自己的日常工具。真正卡住的不是生成能力，而是理解、发现和表达。",
     outcome: "Pears 用一次真实示范，把经验蒸馏成可执行规格。",
     barriers: [
       {
@@ -196,15 +196,15 @@ export const siteContent = {
   materials: [
     {
       icon: Film,
-      title: "最终路演视频",
+      title: "产品介绍视频",
       label: "已替换正式版",
-      body: "使用 PeersWork 路演视频压缩后的网页版本，适合手机扫码预览。",
+      body: "使用 PeersWork 产品介绍视频压缩后的网页版本，适合手机扫码预览。",
       href: "/#demo",
       action: "回到视频",
     },
     {
       icon: BookOpen,
-      title: "完整路演 PPT",
+      title: "完整介绍资料",
       label: "HTML 原件",
       body: "保留 standalone HTML 原样展示，不做转换，便于现场和扫码完整查看。",
       href: "/deck",
@@ -224,14 +224,14 @@ export const siteContent = {
       title: "Pears 商业计划书 v6",
       label: "PDF 原件",
       body:
-        "包含商业叙事、市场判断和落地路径，现场路演后可直接分享。",
+        "包含商业叙事、市场判断和落地路径，可直接作为补充资料分享。",
       href: "/materials/pears-business-plan-v6.pdf",
       action: "打开 PDF",
     },
   ] satisfies Material[],
   footerLinks: [
     { label: "Pears Agent", href: "https://pear-work-web.netlify.app/" },
-    { label: "完整路演", href: "/deck" },
+    { label: "完整信息", href: "/deck" },
     { label: "资料中心", href: "/materials" },
   ],
   decorativeIcons: {

@@ -19,7 +19,7 @@ describe("Pear_Web public site", () => {
       "href",
       "https://pear-work-web.netlify.app/",
     );
-    expect(screen.getAllByRole("link", { name: /完整路演/i })[0]).toHaveAttribute(
+    expect(screen.getAllByRole("link", { name: /完整信息/i })[0]).toHaveAttribute(
       "href",
       "/deck",
     );
@@ -51,7 +51,7 @@ describe("Pear_Web public site", () => {
     const videoSection = container.querySelector('[data-section="demo-video"]');
 
     expect(backgroundSection).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Agent 会写了/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Vibecoding 让开发门槛/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /技术黑箱/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /AI 认知局限/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /需求表达门槛/i })).toBeInTheDocument();
@@ -114,7 +114,7 @@ describe("Pear_Web public site", () => {
 
     render(<App />);
 
-    const frame = screen.getByTitle("Pears 完整路演");
+    const frame = screen.getByTitle("Pears 完整信息");
     expect(frame).toHaveAttribute("src", siteContent.deckPath);
     expect(screen.getByRole("link", { name: /新窗口打开/i })).toHaveAttribute(
       "href",

@@ -79,7 +79,7 @@ function BackgroundSection() {
       </div>
       <div className="background-map" aria-label="Agent 落地三道坎">
         <div className="map-source">
-          <span>Vibe coding</span>
+          <span>Vibecoding</span>
           <strong>Agent 生成门槛降低</strong>
         </div>
         <div className="barrier-grid">
@@ -101,8 +101,8 @@ function DemoVideoSection() {
     <section className="section video-section" data-section="demo-video" id="demo">
       <div className="section-copy narrow">
         <span className="section-label">演示视频</span>
-        <h2>最终路演视频：Pears 怎样把示范变成 Agent。</h2>
-        <p>当前使用正式路演视频的网页压缩版本，适合手机端快速预览。</p>
+        <h2>产品介绍视频：Pears 怎样把示范变成 Agent。</h2>
+        <p>当前使用正式产品介绍视频的网页压缩版本，适合手机端快速预览。</p>
       </div>
       <div className="video-shell">
         <video controls preload="metadata" src={siteContent.videoPath}>
@@ -110,7 +110,7 @@ function DemoVideoSection() {
         </video>
         <div className="video-caption">
           <Play aria-hidden="true" size={18} />
-          <span>正式路演视频已替换，可在资料页打开完整补充文件。</span>
+          <span>正式产品介绍视频已替换，可在资料页打开完整补充文件。</span>
         </div>
       </div>
     </section>
@@ -260,11 +260,11 @@ function ProofSection() {
         </article>
         <article className="proof-card resource-proof">
           <span>补充资料</span>
-          <h3>视频、路演、PDF 放在资料中心。</h3>
+          <h3>视频、介绍资料、PDF 放在资料中心。</h3>
           <p>需要完整信息时再进入资料页，避免首页变成文件堆。</p>
           <div className="resource-links">
             <a href="/#demo">看视频</a>
-            <a href="/deck">看完整路演</a>
+            <a href="/deck">看完整信息</a>
             <a href="/materials">看资料中心</a>
           </div>
         </article>
@@ -349,7 +349,7 @@ function HomePage() {
 
       <section className="final-cta">
         <h2>让工具长成你的工作方式。</h2>
-        <p>打开 Pears Agent，或把完整路演发给需要了解项目的人。</p>
+        <p>打开 Pears Agent，或把完整信息发给需要了解项目的人。</p>
         <div className="hero-actions">
           <a className="button button-primary" href={siteContent.agentUrl}>
             打开 Pears Agent
@@ -369,8 +369,8 @@ function DeckPage() {
   return (
     <section className="page-shell deck-page">
       <div className="page-heading">
-        <span className="section-label">完整路演</span>
-        <h1>Pears 完整路演</h1>
+        <span className="section-label">完整信息</span>
+        <h1>Pears 完整信息</h1>
         <p>这里保留原始 standalone HTML，不转换。手机扫码也能直接打开完整版本。</p>
         <div className="hero-actions">
           <a className="button button-primary" href={siteContent.deckPath} target="_blank">
@@ -384,7 +384,7 @@ function DeckPage() {
       </div>
       <iframe
         className="deck-frame"
-        title="Pears 完整路演"
+        title="Pears 完整信息"
         src={siteContent.deckPath}
       />
     </section>
@@ -420,7 +420,7 @@ function MaterialsPage() {
         <span className="section-label">资料中心</span>
         <h1>资料中心</h1>
         <p>
-          首页只放最主要的路演信息，这里集中放视频、PPT、产品说明文档和商业计划书原件。
+          首页只放最主要的项目信息，这里集中放视频、介绍资料、产品说明文档和商业计划书原件。
         </p>
       </div>
       <div className="materials-grid">
