@@ -49,17 +49,13 @@ export const siteContent = {
     { label: "资料", href: "/materials" },
   ] satisfies NavItem[],
   hero: {
-    title: "看你做一遍，生成专属 Agent",
+    title: "看你做一遍，剩下的交给 Pears",
+    statement: "一个会学习你工作方式的智能体工作台",
     body:
-      "Pears 把真实工作流从示范中学出来，蒸馏成可编辑规格，再交给编码智能体生成常驻可用的专属 App。",
+      "不要求你先写清需求。你只需要示范一次真实工作流，Pears 会把步骤蒸馏成可编辑规格，并交给编码智能体生成常驻可用的专属 Agent。",
     primaryCta: "打开 Pears Agent",
     secondaryCta: "完整路演",
   },
-  proof: [
-    { value: "v0.4.2", label: "当前产品版本" },
-    { value: "2 个", label: "已落地专属 App" },
-    { value: "5 步", label: "示范到成长闭环" },
-  ],
   thesis: [
     {
       icon: Route,

@@ -11,7 +11,7 @@ describe("Pear_Web public site", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /看你做一遍，生成专属 Agent/i,
+        name: /看你做一遍，剩下的交给 Pears/i,
       }),
     ).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /打开 Pears Agent/i })[0]).toHaveAttribute(

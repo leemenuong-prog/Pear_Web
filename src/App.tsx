@@ -53,7 +53,13 @@ function HomePage() {
     <>
       <section className="hero-section">
         <div className="hero-copy">
-          <h1>{siteContent.hero.title}</h1>
+          <h1>
+            <span>看你做一遍，</span>
+            <span>
+              剩下的交给 <em>Pears</em>
+            </span>
+          </h1>
+          <p className="hero-statement">{siteContent.hero.statement}</p>
           <p>{siteContent.hero.body}</p>
           <div className="hero-actions">
             <a className="button button-primary" href={siteContent.agentUrl}>
@@ -74,6 +80,10 @@ function HomePage() {
             <strong>Pears Workbench</strong>
           </div>
           <div className="product-body">
+            <div className="product-intent">
+              <span>描述一件重复工作</span>
+              <strong>每 2 天追踪跨平台视频数据，并生成日报</strong>
+            </div>
             <div className="task-input">
               <span>我每天需要追踪跨平台视频数据</span>
               <button type="button">开始任务</button>
@@ -97,19 +107,13 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="proof-row" aria-label="产品进展">
-        {siteContent.proof.map((item) => (
-          <div className="proof-item" key={item.label}>
-            <strong>{item.value}</strong>
-            <span>{item.label}</span>
-          </div>
-        ))}
-      </section>
-
       <section className="section intro-section" id="value">
         <div className="section-copy">
           <span className="section-label">核心价值</span>
           <h2>不是让用户写清需求，而是从真实工作里学出来。</h2>
+          <p>
+            Pears 的产品重点不是生成一份漂亮文档，而是让工作流被看见、被确认、被交付，并在运行后继续变好。
+          </p>
         </div>
         <div className="feature-grid">
           {siteContent.thesis.map((item) => {
@@ -128,7 +132,7 @@ function HomePage() {
       <section className="section video-section" id="demo">
         <div className="section-copy narrow">
           <span className="section-label">演示视频</span>
-          <h2>先看产品怎样把一次示范变成可运行的 Agent。</h2>
+          <h2>先看产品如何把示范变成 Agent。</h2>
           <p>当前视频为占位版本，后续替换 `/media/pears-demo.mp4` 即可更新官网展示。</p>
         </div>
         <div className="video-shell">
@@ -149,7 +153,10 @@ function HomePage() {
       <section className="section process-section">
         <div className="section-copy">
           <span className="section-label">产品流程</span>
-          <h2>示范、蒸馏、拍板、生成、成长。</h2>
+          <h2>从示范到成长，5 步闭环。</h2>
+          <p>
+            从一次真实示范开始，到一个可运行的专属 App 结束；再通过运行反馈回到优化工具台。
+          </p>
         </div>
         <div className="process-list">
           {siteContent.process.map((step, index) => (
@@ -166,6 +173,9 @@ function HomePage() {
         <div className="section-copy">
           <span className="section-label">已落地案例</span>
           <h2>首发场景已经长出可用的专属 App。</h2>
+          <p>
+            现在不是单纯概念页，而是围绕跨境视频工作流跑出的真实应用方向。
+          </p>
         </div>
         <div className="case-grid">
           {siteContent.cases.map((item) => (
