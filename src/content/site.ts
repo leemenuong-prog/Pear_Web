@@ -55,7 +55,7 @@ export type Material = {
 };
 
 export const siteContent = {
-  agentUrl: "https://pear-work-web.vercel.app",
+  agentUrl: "https://pear-work-web.netlify.app/",
   deckPath: "/deck/pears-roadshow.html",
   videoPath: "/media/pears-roadshow-final.mp4",
   nav: [
@@ -73,10 +73,10 @@ export const siteContent = {
   },
   background: {
     eyebrow: "应用背景",
-    title: "Vibe coding 降低了门槛，但生产力还卡在落地前。",
+    title: "Agent 会写了，落地还卡在三道坎。",
     body:
-      "很多 OPC 和团队已经能让 Agent 写出程序，却还没把它变成自己的日常工具。真正卡住的不是生成能力，而是理解、发现和表达。",
-    outcome: "Pears 让人先示范，再把经验变成清晰规格。",
+      "Vibe coding 让生成程序变容易，但很多 OPC 和团队仍然没把这份生产力变成自己的工具。真正卡住的是理解、发现和表达。",
+    outcome: "Pears 用一次真实示范，把经验蒸馏成可执行规格。",
     barriers: [
       {
         icon: Boxes,
@@ -99,10 +99,10 @@ export const siteContent = {
     ] satisfies BackgroundBarrier[],
   },
   tutorial: {
-    eyebrow: "新手教程",
-    title: "新手教程：4 步看 Pears 怎么学会你。",
+    eyebrow: "产品机制",
+    title: "示范到 Agent：4 步把经验变成工具。",
     body:
-      "当前先用可替换的动态图形位展示流程。后续把新手教程截图、GIF 或短视频填到对应步骤即可。",
+      "用户不用先写完整 PRD，只要从一件重复工作开始，让 Pears 看见做法、整理边界，再交付成可运行的专属 Agent。",
     steps: [
       {
         icon: FileText,
@@ -230,7 +230,7 @@ export const siteContent = {
     },
   ] satisfies Material[],
   footerLinks: [
-    { label: "Pears Agent", href: "https://pear-work-web.vercel.app" },
+    { label: "Pears Agent", href: "https://pear-work-web.netlify.app/" },
     { label: "完整路演", href: "/deck" },
     { label: "资料中心", href: "/materials" },
   ],

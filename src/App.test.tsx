@@ -14,9 +14,10 @@ describe("Pear_Web public site", () => {
         name: /看你做一遍，剩下的交给 Pears/i,
       }),
     ).toBeInTheDocument();
+    expect(siteContent.agentUrl).toBe("https://pear-work-web.netlify.app/");
     expect(screen.getAllByRole("link", { name: /打开 Pears Agent/i })[0]).toHaveAttribute(
       "href",
-      siteContent.agentUrl,
+      "https://pear-work-web.netlify.app/",
     );
     expect(screen.getAllByRole("link", { name: /完整路演/i })[0]).toHaveAttribute(
       "href",
@@ -28,17 +29,17 @@ describe("Pear_Web public site", () => {
     );
   });
 
-  it("puts the demo video before text-heavy value content on the homepage", () => {
+  it("keeps the demo video before the compact mechanism content", () => {
     window.history.pushState({}, "", "/");
     const { container } = render(<App />);
 
     const videoSection = container.querySelector('[data-section="demo-video"]');
-    const valueSection = container.querySelector('[data-section="value"]');
+    const mechanismSection = container.querySelector('[data-section="mechanism"]');
 
     expect(videoSection).toBeInTheDocument();
-    expect(valueSection).toBeInTheDocument();
+    expect(mechanismSection).toBeInTheDocument();
     expect(
-      videoSection?.compareDocumentPosition(valueSection as Element),
+      videoSection?.compareDocumentPosition(mechanismSection as Element),
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
@@ -50,7 +51,7 @@ describe("Pear_Web public site", () => {
     const videoSection = container.querySelector('[data-section="demo-video"]');
 
     expect(backgroundSection).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Vibe coding 降低了门槛/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Agent 会写了/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /技术黑箱/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /AI 认知局限/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /需求表达门槛/i })).toBeInTheDocument();
@@ -59,16 +60,30 @@ describe("Pear_Web public site", () => {
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
-  it("renders the visual tutorial flow with four replaceable onboarding steps", () => {
+  it("renders the compact product mechanism with four onboarding steps", () => {
     window.history.pushState({}, "", "/");
 
     render(<App />);
 
-    expect(screen.getByRole("heading", { name: /新手教程/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /示范到 Agent/i })).toBeInTheDocument();
     expect(screen.getByText("描述任务")).toBeInTheDocument();
     expect(screen.getByText("录制示范")).toBeInTheDocument();
     expect(screen.getByText("确认规格")).toBeInTheDocument();
     expect(screen.getByText("生成 Agent")).toBeInTheDocument();
+  });
+
+  it("renders compact proof and material entry points on the homepage", () => {
+    window.history.pushState({}, "", "/");
+    const { container } = render(<App />);
+
+    expect(container.querySelector('[data-section="proof"]')).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /已经跑起来的场景/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "P 视频管家" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "P 脚本复刻" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /看资料中心/i })).toHaveAttribute(
+      "href",
+      "/materials",
+    );
   });
 
   it("renders the materials page with the formal PDF documents", () => {

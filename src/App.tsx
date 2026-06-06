@@ -193,20 +193,81 @@ function VisualStepCard({ step, index }: { step: TutorialStep; index: number }) 
   );
 }
 
-function TutorialFlow() {
+function MechanismSection() {
   return (
-    <section className="section tutorial-section">
-      <div className="section-copy tutorial-heading">
+    <section className="section mechanism-section" data-section="mechanism">
+      <div className="section-copy mechanism-heading">
         <span className="section-label">{siteContent.tutorial.eyebrow}</span>
         <div>
           <h2>{siteContent.tutorial.title}</h2>
           <p>{siteContent.tutorial.body}</p>
         </div>
       </div>
+      <div className="mechanism-summary" aria-label="Pears 核心价值">
+        {siteContent.thesis.map((item) => {
+          const Icon = item.icon;
+          return (
+            <article className="mechanism-insight" key={item.title}>
+              <Icon aria-hidden="true" size={18} />
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
       <div className="tutorial-flow" aria-label="Pears 新手教程步骤">
         {siteContent.tutorial.steps.map((step, index) => (
           <VisualStepCard index={index} key={step.title} step={step} />
         ))}
+      </div>
+    </section>
+  );
+}
+
+function ProofSection() {
+  return (
+    <section className="section proof-section" data-section="proof">
+      <div className="section-copy proof-heading">
+        <span className="section-label">落地证明</span>
+        <div>
+          <h2>已经跑起来的场景。</h2>
+          <p>
+            首页不堆资料，把最能证明产品方向的内容放在一起：真实应用、当前进展和可继续查看的正式材料。
+          </p>
+        </div>
+      </div>
+      <div className="proof-layout">
+        {siteContent.cases.map((item) => (
+          <article className="proof-card case-proof" key={item.name}>
+            <span>{item.type}</span>
+            <h3>{item.name}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+        <article className="proof-card progress-proof">
+          <span>产品进展</span>
+          <h3>不是概念页，已经进入可用闭环。</h3>
+          <div className="progress-pills" aria-label="产品进展">
+            {siteContent.progress.map((item) => (
+              <span key={item}>
+                <CheckCircle2 aria-hidden="true" size={15} />
+                {item}
+              </span>
+            ))}
+          </div>
+        </article>
+        <article className="proof-card resource-proof">
+          <span>补充资料</span>
+          <h3>视频、路演、PDF 放在资料中心。</h3>
+          <p>需要完整信息时再进入资料页，避免首页变成文件堆。</p>
+          <div className="resource-links">
+            <a href="/#demo">看视频</a>
+            <a href="/deck">看完整路演</a>
+            <a href="/materials">看资料中心</a>
+          </div>
+        </article>
       </div>
     </section>
   );
@@ -282,84 +343,9 @@ function HomePage() {
 
       <DemoVideoSection />
 
-      <TutorialFlow />
+      <MechanismSection />
 
-      <section className="section intro-section" data-section="value" id="value">
-        <div className="section-copy">
-          <span className="section-label">核心价值</span>
-          <h2>不是让用户写清需求，而是从真实工作里学出来。</h2>
-          <p>
-            Pears 的产品重点不是生成一份漂亮文档，而是让工作流被看见、被确认、被交付，并在运行后继续变好。
-          </p>
-        </div>
-        <div className="feature-grid">
-          {siteContent.thesis.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article className="feature-card" key={item.title}>
-                <Icon aria-hidden="true" size={24} />
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="section process-section">
-        <div className="section-copy">
-          <span className="section-label">产品流程</span>
-          <h2>从示范到成长，5 步闭环。</h2>
-          <p>
-            从一次真实示范开始，到一个可运行的专属 App 结束；再通过运行反馈回到优化工具台。
-          </p>
-        </div>
-        <div className="process-list">
-          {siteContent.process.map((step, index) => (
-            <article className="process-step" key={step.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section case-section">
-        <div className="section-copy">
-          <span className="section-label">已落地案例</span>
-          <h2>首发场景已经长出可用的专属 App。</h2>
-          <p>
-            现在不是单纯概念页，而是围绕跨境视频工作流跑出的真实应用方向。
-          </p>
-        </div>
-        <div className="case-grid">
-          {siteContent.cases.map((item) => (
-            <article className="case-card" key={item.name}>
-              <span>{item.type}</span>
-              <h3>{item.name}</h3>
-              <p>{item.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section progress-section">
-        <div className="progress-panel">
-          <div>
-            <span className="section-label">产品进展</span>
-            <h2>不是概念，已经跑起来了。</h2>
-          </div>
-          <ul>
-            {siteContent.progress.map((item) => (
-              <li key={item}>
-                <CheckCircle2 aria-hidden="true" size={18} />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <ProofSection />
 
       <section className="final-cta">
         <h2>让工具长成你的工作方式。</h2>
@@ -434,7 +420,7 @@ function MaterialsPage() {
         <span className="section-label">资料中心</span>
         <h1>资料中心</h1>
         <p>
-          首页只放最主要的路演信息，这里集中放视频、PPT、PRD 摘要和商业计划摘要。
+          首页只放最主要的路演信息，这里集中放视频、PPT、产品说明文档和商业计划书原件。
         </p>
       </div>
       <div className="materials-grid">
