@@ -7,7 +7,12 @@ import {
   Play,
 } from "lucide-react";
 import "./App.css";
-import { siteContent, type Material, type TutorialStep } from "./content/site";
+import {
+  siteContent,
+  type BackgroundBarrier,
+  type Material,
+  type TutorialStep,
+} from "./content/site";
 
 const routeForPath = (pathname: string) => {
   if (pathname.startsWith("/deck")) return "deck";
@@ -48,13 +53,56 @@ function SiteHeader() {
   );
 }
 
+function BarrierCard({ barrier, index }: { barrier: BackgroundBarrier; index: number }) {
+  const Icon = barrier.icon;
+
+  return (
+    <article className="barrier-card">
+      <div className="barrier-card-top">
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <Icon aria-hidden="true" size={20} />
+      </div>
+      <h3>{barrier.title}</h3>
+      <strong>{barrier.short}</strong>
+      <p>{barrier.body}</p>
+    </article>
+  );
+}
+
+function BackgroundSection() {
+  return (
+    <section className="section background-section" data-section="background">
+      <div className="background-copy">
+        <span className="section-label">{siteContent.background.eyebrow}</span>
+        <h2>{siteContent.background.title}</h2>
+        <p>{siteContent.background.body}</p>
+      </div>
+      <div className="background-map" aria-label="Agent 落地三道坎">
+        <div className="map-source">
+          <span>Vibe coding</span>
+          <strong>Agent 生成门槛降低</strong>
+        </div>
+        <div className="barrier-grid">
+          {siteContent.background.barriers.map((barrier, index) => (
+            <BarrierCard barrier={barrier} index={index} key={barrier.title} />
+          ))}
+        </div>
+        <div className="map-outcome">
+          <span>🍐 Pears</span>
+          <strong>{siteContent.background.outcome}</strong>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function DemoVideoSection() {
   return (
     <section className="section video-section" data-section="demo-video" id="demo">
       <div className="section-copy narrow">
         <span className="section-label">演示视频</span>
-        <h2>先看 2 分钟，Pears 怎样把示范变成 Agent。</h2>
-        <p>当前视频为占位版本。后续替换 `/media/pears-demo.mp4`，官网会自动使用新演示。</p>
+        <h2>最终路演视频：Pears 怎样把示范变成 Agent。</h2>
+        <p>当前使用正式路演视频的网页压缩版本，适合手机端快速预览。</p>
       </div>
       <div className="video-shell">
         <video controls preload="metadata" src={siteContent.videoPath}>
@@ -62,7 +110,7 @@ function DemoVideoSection() {
         </video>
         <div className="video-caption">
           <Play aria-hidden="true" size={18} />
-          <span>手机端优先看到演示，再继续看步骤和资料。</span>
+          <span>正式路演视频已替换，可在资料页打开完整补充文件。</span>
         </div>
       </div>
     </section>
@@ -229,6 +277,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <BackgroundSection />
 
       <DemoVideoSection />
 

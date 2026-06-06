@@ -42,6 +42,23 @@ describe("Pear_Web public site", () => {
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
+  it("renders the visual application background before the demo video", () => {
+    window.history.pushState({}, "", "/");
+    const { container } = render(<App />);
+
+    const backgroundSection = container.querySelector('[data-section="background"]');
+    const videoSection = container.querySelector('[data-section="demo-video"]');
+
+    expect(backgroundSection).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Vibe coding 降低了门槛/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /技术黑箱/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /AI 认知局限/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /需求表达门槛/i })).toBeInTheDocument();
+    expect(
+      backgroundSection?.compareDocumentPosition(videoSection as Element),
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
   it("renders the visual tutorial flow with four replaceable onboarding steps", () => {
     window.history.pushState({}, "", "/");
 
@@ -54,19 +71,27 @@ describe("Pear_Web public site", () => {
     expect(screen.getByText("生成 Agent")).toBeInTheDocument();
   });
 
-  it("renders the materials page as summaries rather than full documents", () => {
+  it("renders the materials page with the formal PDF documents", () => {
     window.history.pushState({}, "", "/materials");
 
     render(<App />);
 
     expect(screen.getByRole("heading", { name: /资料中心/i })).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /PRD 摘要/i }),
+      screen.getByRole("heading", { name: /Pears 说明文档 v7/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /商业计划摘要/i }),
+      screen.getByRole("heading", { name: /Pears 商业计划书 v6/i }),
     ).toBeInTheDocument();
-    expect(screen.getAllByText(/完整内容后续可替换为正式版本/i).length).toBeGreaterThan(0);
+    const pdfLinks = screen.getAllByRole("link", { name: /打开 PDF/i });
+    expect(pdfLinks[0]).toHaveAttribute(
+      "href",
+      "/materials/pears-product-doc-v7.pdf",
+    );
+    expect(pdfLinks[1]).toHaveAttribute(
+      "href",
+      "/materials/pears-business-plan-v6.pdf",
+    );
   });
 
   it("renders the deck page with an iframe pointing at the standalone deck", () => {

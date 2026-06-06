@@ -25,6 +25,13 @@ export type Feature = {
   body: string;
 };
 
+export type BackgroundBarrier = {
+  icon: LucideIcon;
+  title: string;
+  short: string;
+  body: string;
+};
+
 export type ProcessStep = {
   title: string;
   body: string;
@@ -50,7 +57,7 @@ export type Material = {
 export const siteContent = {
   agentUrl: "https://pear-work-web.vercel.app",
   deckPath: "/deck/pears-roadshow.html",
-  videoPath: "/media/pears-demo.mp4",
+  videoPath: "/media/pears-roadshow-final.mp4",
   nav: [
     { label: "首页", href: "/" },
     { label: "完整路演", href: "/deck" },
@@ -60,9 +67,36 @@ export const siteContent = {
     title: "看你做一遍，剩下的交给 Pears",
     statement: "一个会学习你工作方式的智能体工作台",
     body:
-      "先看一段真实演示：Pears 怎样从一次示范里学出工作流，并生成常驻可用的专属 Agent。",
+      "Pears 帮你把隐性的工作经验蒸馏成可执行规格，再生成常驻可用的专属 Agent。",
     primaryCta: "打开 Pears Agent",
     secondaryCta: "完整路演",
+  },
+  background: {
+    eyebrow: "应用背景",
+    title: "Vibe coding 降低了门槛，但生产力还卡在落地前。",
+    body:
+      "很多 OPC 和团队已经能让 Agent 写出程序，却还没把它变成自己的日常工具。真正卡住的不是生成能力，而是理解、发现和表达。",
+    outcome: "Pears 让人先示范，再把经验变成清晰规格。",
+    barriers: [
+      {
+        icon: Boxes,
+        title: "技术黑箱",
+        short: "看不懂实现",
+        body: "生成出来了，但不懂代码逻辑，像在面对黑箱。",
+      },
+      {
+        icon: Sparkles,
+        title: "AI 认知局限",
+        short: "想不到场景",
+        body: "只停留在图文生成，没意识到还能扒数据、写脚本、处理文件。",
+      },
+      {
+        icon: FileText,
+        title: "需求表达门槛",
+        short: "说不清规格",
+        body: "有隐性经验，却缺少产品抽象，难以描述边界和执行规则。",
+      },
+    ] satisfies BackgroundBarrier[],
   },
   tutorial: {
     eyebrow: "新手教程",
@@ -162,9 +196,9 @@ export const siteContent = {
   materials: [
     {
       icon: Film,
-      title: "演示视频",
-      label: "可播放占位版",
-      body: "当前使用 6 月 4 日视频作为占位素材，后续只需替换同一路径的视频文件。",
+      title: "最终路演视频",
+      label: "已替换正式版",
+      body: "使用 PeersWork 路演视频压缩后的网页版本，适合手机扫码预览。",
       href: "/#demo",
       action: "回到视频",
     },
@@ -178,17 +212,21 @@ export const siteContent = {
     },
     {
       icon: FileText,
-      title: "PRD 摘要",
-      label: "轻量摘要",
+      title: "Pears 说明文档 v7",
+      label: "PDF 原件",
       body:
-        "Pears 的 PRD 聚焦“示范、蒸馏、交付、成长”闭环。完整内容后续可替换为正式版本。",
+        "包含产品说明、使用流程和核心机制，作为官网资料页的正式补充文档。",
+      href: "/materials/pears-product-doc-v7.pdf",
+      action: "打开 PDF",
     },
     {
       icon: ChartNoAxesCombined,
-      title: "商业计划摘要",
-      label: "轻量摘要",
+      title: "Pears 商业计划书 v6",
+      label: "PDF 原件",
       body:
-        "商业叙事聚焦重复工作自动化、个人专属 Agent、运行反馈飞轮和首发场景验证。",
+        "包含商业叙事、市场判断和落地路径，现场路演后可直接分享。",
+      href: "/materials/pears-business-plan-v6.pdf",
+      action: "打开 PDF",
     },
   ] satisfies Material[],
   footerLinks: [
