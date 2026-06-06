@@ -25,5 +25,4 @@ Netlify publish directory: `dist`
 - Agent URL and page copy: `src/content/site.ts`
 - Demo video: `public/media/pears-demo.mp4`
 - Full deck: `public/deck/pears-roadshow.html`
-- Brand assets: `public/brand/`
-
+- Brand mark: code-native `🍐 Pears`; do not use legacy PNG logos as brand identity.

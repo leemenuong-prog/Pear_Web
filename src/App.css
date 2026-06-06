@@ -24,14 +24,30 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   min-width: 0;
 }
 
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dfe8cf;
+  border-radius: 10px;
+  background: #f7f9ee;
+  box-shadow: 0 7px 18px rgba(95, 143, 72, 0.18);
+  font-size: 21px;
+  line-height: 1;
+}
+
 .brand-word {
-  width: 112px;
-  height: auto;
-  object-fit: contain;
+  color: #243229;
+  font-size: 21px;
+  font-weight: 720;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 .desktop-nav {
@@ -637,7 +653,7 @@ main {
   main,
   .site-footer,
   .deck-page {
-    width: min(100% - 24px, 1180px);
+    width: min(calc(100% - 24px), 1180px);
   }
 
   .site-header {
@@ -646,12 +662,20 @@ main {
   }
 
   .brand-word {
-    width: 96px;
+    font-size: 18px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    font-size: 18px;
   }
 
   .hero-copy h1,
   .page-heading h1 {
-    font-size: 44px;
+    font-size: 38px;
+    overflow-wrap: anywhere;
   }
 
   .hero-copy p,

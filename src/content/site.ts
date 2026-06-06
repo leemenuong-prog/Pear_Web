@@ -43,8 +43,6 @@ export const siteContent = {
   agentUrl: "https://pear-work-web.vercel.app",
   deckPath: "/deck/pears-roadshow.html",
   videoPath: "/media/pears-demo.mp4",
-  logoHorizontal: "/brand/pears-logo-horizontal.png",
-  logoIcon: "/brand/pears-logo-icon.png",
   nav: [
     { label: "首页", href: "/" },
     { label: "完整路演", href: "/deck" },
@@ -170,4 +168,3 @@ export const siteContent = {
     arrow: ArrowUpRight,
   },
 };
-

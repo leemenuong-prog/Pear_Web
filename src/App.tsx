@@ -18,7 +18,10 @@ const routeForPath = (pathname: string) => {
 function BrandLink() {
   return (
     <a className="brand" href="/" aria-label="Pears 首页">
-      <img src={siteContent.logoHorizontal} alt="Pears" className="brand-word" />
+      <span className="brand-mark" aria-hidden="true">
+        🍐
+      </span>
+      <span className="brand-word">Pears</span>
     </a>
   );
 }
@@ -132,7 +135,6 @@ function HomePage() {
           <video
             controls
             preload="metadata"
-            poster={siteContent.logoHorizontal}
             src={siteContent.videoPath}
           >
             你的浏览器暂不支持视频播放。
