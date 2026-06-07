@@ -291,23 +291,6 @@ function HomePage() {
           </h1>
           <p className="hero-statement">{siteContent.hero.statement}</p>
           <p>{siteContent.hero.body}</p>
-          <div className="hero-actions">
-            <a className="button button-primary" href={siteContent.agentUrl}>
-              {siteContent.hero.primaryCta}
-              <ArrowUpRight aria-hidden="true" size={18} />
-            </a>
-            <a className="button button-secondary" href="/deck">
-              {siteContent.hero.secondaryCta}
-              <ArrowRight aria-hidden="true" size={18} />
-            </a>
-          </div>
-          <div className="hero-mobile-cue" aria-label="Pears 生成流程">
-            <span>示范</span>
-            <ArrowRight aria-hidden="true" size={14} />
-            <span>规格</span>
-            <ArrowRight aria-hidden="true" size={14} />
-            <span>Agent</span>
-          </div>
         </div>
         <div className="hero-product" aria-label="Pears 产品流程预览">
           <div className="product-bar">

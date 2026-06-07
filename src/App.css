@@ -203,10 +203,6 @@ main {
   margin-top: 26px;
 }
 
-.hero-mobile-cue {
-  display: none;
-}
-
 .hero-product {
   position: relative;
   border: 1px solid rgba(33, 94, 55, 0.16);
@@ -1344,20 +1340,6 @@ main {
 
   .hero-product {
     display: none;
-  }
-
-  .hero-mobile-cue {
-    margin-top: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-    border: 1px solid rgba(33, 94, 55, 0.14);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.82);
-    color: #2c6742;
-    font-size: 13px;
-    font-weight: 800;
   }
 
   .hero-statement {
