@@ -1144,6 +1144,35 @@ main {
   box-shadow: 0 24px 72px rgba(40, 92, 52, 0.09);
 }
 
+.final-actions {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.final-info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 2px;
+  color: #20523a;
+  font-size: 15px;
+  font-weight: 820;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.final-info-link:hover {
+  color: #12351f;
+  transform: translateX(2px);
+}
+
 .page-shell {
   min-height: 72vh;
 }
@@ -1357,6 +1386,7 @@ main {
   }
 
   .hero-actions,
+  .final-actions,
   .task-input,
   .site-footer {
     align-items: stretch;
@@ -1365,6 +1395,13 @@ main {
 
   .button {
     width: 100%;
+  }
+
+  .final-info-link {
+    width: fit-content;
+    align-self: center;
+    min-height: 32px;
+    font-size: 14px;
   }
 
   .section,

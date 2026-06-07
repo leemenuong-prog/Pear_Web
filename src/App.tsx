@@ -338,13 +338,13 @@ function HomePage() {
       <section className="final-cta">
         <h2>让工具长成你的工作方式。</h2>
         <p>打开 Pears Agent，或把完整信息发给需要了解项目的人。</p>
-        <div className="hero-actions">
+        <div className="final-actions">
           <a className="button button-primary" href={siteContent.agentUrl}>
             打开 Pears Agent
             <ArrowUpRight aria-hidden="true" size={18} />
           </a>
-          <a className="button button-secondary" href="/materials">
-            查看资料
+          <a className="final-info-link" href="/deck">
+            完整信息
             <ArrowRight aria-hidden="true" size={18} />
           </a>
         </div>

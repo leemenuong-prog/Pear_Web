@@ -27,6 +27,7 @@ describe("Pear_Web public site", () => {
       "href",
       "/materials",
     );
+    expect(screen.queryByRole("link", { name: "查看资料" })).not.toBeInTheDocument();
   });
 
   it("keeps the demo video before the compact mechanism content", () => {
@@ -84,6 +85,11 @@ describe("Pear_Web public site", () => {
       "href",
       "/materials",
     );
+    expect(
+      screen
+        .getAllByRole("link", { name: "完整信息" })
+        .some((link) => link.getAttribute("href") === "/deck"),
+    ).toBe(true);
   });
 
   it("renders the materials page with the formal PDF documents", () => {
