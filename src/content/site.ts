@@ -55,7 +55,7 @@ export type Material = {
 };
 
 export const siteContent = {
-  agentUrl: "https://pear-work-web.netlify.app/",
+  agentUrl: "https://pearwork.netlify.app/",
   deckPath: "/deck/pears-roadshow.html",
   videoPath: "/media/pears-roadshow-final.mp4",
   nav: [
@@ -230,7 +230,7 @@ export const siteContent = {
     },
   ] satisfies Material[],
   footerLinks: [
-    { label: "Pears Agent", href: "https://pear-work-web.netlify.app/" },
+    { label: "Pears Agent", href: "https://pearwork.netlify.app/" },
     { label: "完整信息", href: "/deck" },
     { label: "资料中心", href: "/materials" },
   ],

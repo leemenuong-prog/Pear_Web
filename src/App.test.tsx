@@ -14,10 +14,10 @@ describe("Pear_Web public site", () => {
         name: /看你做一遍，剩下的交给 Pears/i,
       }),
     ).toBeInTheDocument();
-    expect(siteContent.agentUrl).toBe("https://pear-work-web.netlify.app/");
+    expect(siteContent.agentUrl).toBe("https://pearwork.netlify.app/");
     expect(screen.getAllByRole("link", { name: /打开 Pears Agent/i })[0]).toHaveAttribute(
       "href",
-      "https://pear-work-web.netlify.app/",
+      "https://pearwork.netlify.app/",
     );
     expect(screen.getAllByRole("link", { name: /完整信息/i })[0]).toHaveAttribute(
       "href",
