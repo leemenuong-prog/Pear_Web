@@ -5,7 +5,9 @@ import {
   ExternalLink,
   Menu,
   Play,
+  X,
 } from "lucide-react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import "./App.css";
 import {
   siteContent,
@@ -31,7 +33,15 @@ function BrandLink() {
   );
 }
 
-function SiteHeader() {
+function SiteHeader({
+  navOpen,
+  onOpenNav,
+  triggerRef,
+}: {
+  navOpen: boolean;
+  onOpenNav: () => void;
+  triggerRef: RefObject<HTMLButtonElement | null>;
+}) {
   return (
     <header className="site-header">
       <BrandLink />
@@ -46,10 +56,58 @@ function SiteHeader() {
         打开 Agent
         <ArrowUpRight aria-hidden="true" size={16} />
       </a>
-      <button className="menu-button" type="button" aria-label="打开导航">
+      <button
+        ref={triggerRef}
+        className="menu-button"
+        type="button"
+        aria-label="打开导航"
+        aria-expanded={navOpen}
+        aria-controls="mobile-nav"
+        onClick={onOpenNav}
+      >
         <Menu aria-hidden="true" size={20} />
       </button>
     </header>
+  );
+}
+
+function MobileNav({
+  onClose,
+  closeRef,
+}: {
+  onClose: () => void;
+  closeRef: RefObject<HTMLButtonElement | null>;
+}) {
+  return (
+    <div className="mobile-nav-overlay" onClick={onClose}>
+      <nav
+        id="mobile-nav"
+        className="mobile-nav-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="导航"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          ref={closeRef}
+          className="mobile-nav-close"
+          type="button"
+          aria-label="关闭导航"
+          onClick={onClose}
+        >
+          <X aria-hidden="true" size={22} />
+        </button>
+        {siteContent.nav.map((item) => (
+          <a href={item.href} key={item.href} onClick={onClose}>
+            {item.label}
+          </a>
+        ))}
+        <a className="mobile-nav-cta" href={siteContent.agentUrl} onClick={onClose}>
+          打开 Agent
+          <ArrowUpRight aria-hidden="true" size={16} />
+        </a>
+      </nav>
+    </div>
   );
 }
 
@@ -437,16 +495,49 @@ function SiteFooter() {
 
 function App() {
   const route = routeForPath(window.location.pathname);
+  const [navOpen, setNavOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (navOpen) {
+      const onKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape") setNavOpen(false);
+      };
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", onKeyDown);
+      closeRef.current?.focus();
+      wasOpen.current = true;
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", onKeyDown);
+      };
+    }
+    if (wasOpen.current) {
+      wasOpen.current = false;
+      triggerRef.current?.focus();
+    }
+  }, [navOpen]);
 
   return (
     <div className="app-shell">
-      <SiteHeader />
-      <main>
-        {route === "home" ? <HomePage /> : null}
-        {route === "deck" ? <DeckPage /> : null}
-        {route === "materials" ? <MaterialsPage /> : null}
-      </main>
-      <SiteFooter />
+      <div className="app-content" inert={navOpen}>
+        <SiteHeader
+          navOpen={navOpen}
+          onOpenNav={() => setNavOpen(true)}
+          triggerRef={triggerRef}
+        />
+        <main>
+          {route === "home" ? <HomePage /> : null}
+          {route === "deck" ? <DeckPage /> : null}
+          {route === "materials" ? <MaterialsPage /> : null}
+        </main>
+        <SiteFooter />
+      </div>
+      {navOpen ? (
+        <MobileNav onClose={() => setNavOpen(false)} closeRef={closeRef} />
+      ) : null}
     </div>
   );
 }
